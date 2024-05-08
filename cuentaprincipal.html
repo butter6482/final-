@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title>ManaMovieStudio - Top 10 Películas</title></title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="index.html" class="login-button">Log In</a>
+
+<!-- Contenido Principal -->
+<div class="container">
+    <!-- Campo de Búsqueda -->
+    <input type="text" id="searchInput" placeholder="Buscar película..." oninput="searchMovies()">
+    
+    <!-- Pantalla Principal -->
+    <section class="main-section">
+        <h2>ManaMovieStudio</h2>
+        <div class="top-movies" id="topMoviesContainer">
+            <!-- Las películas se generarán dinámicamente aquí -->
+        </div>
+    </section>
+</div>
+
+<!-- Detalles de Película -->
+<section class="movie-details" id="movieDetailsContainer">
+    <!-- Aquí se mostrarán los detalles de la película seleccionada -->
+</section>
+
+<!-- Scripts -->
+<script>
+    // Lista de películas
+    const movies = [
+        {
+            title: "The Shape of Water",
+            director: "Guillermo del Toro",
+            genre: "Fantástico",
+            summary: "Segunda película de género fantástico en ganar el Oscar después de LOTR. Se trata de una experiencia narrativa y visual amable, fácil de ver y sencilla de comprender.",
+            reviewScore: 4,
+            imageSrc: "imagenes/shapewater.jpg"
+        },
+        {
+            title: "La ciudad perdida",
+            director: "Aaron Nee y Adam Nee",
+            genre: "Comedia",
+            summary: "Sandra Bullock interpreta a una exitosa escritora de novelas románticas que es raptada por un excéntrico millonario.",
+            reviewScore: 3,
+            imageSrc: "imagenes/la ciudad perdida.jpg"
+        },
+        {
+            title: "Prisoners",
+            director: "Denis Villeneuve",
+            genre: "Thriller",
+            summary: "Potente thriller protagonizado por Hugh Jackman, quien busca desesperadamente a su hija secuestrada.",
+            reviewScore: 5,
+            imageSrc: "imagenes/prisioners.jpg"
+        },
+        {
+            title: "Nightcrawler",
+            director: "Dan Gilroy",
+            genre: "Thriller",
+            summary: "Escalofriante aproximación a la crudeza del periodismo y la nota roja, protagonizada por Jake Gyllenhaal.",
+            reviewScore: 4,
+            imageSrc: "imagenes/nigthcrawl.jpg"
+        },
+        {
+            title: "No Hard Feelings",
+            director: "Gene Stupnitsky",
+            genre: "Comedia romántica",
+            summary: "Comedia romántica sobre una chica contratada para salir con un joven introvertido.",
+            reviewScore: 3,
+            imageSrc: "imagenes/hazme el favor.jpg"
+        },
+        {
+            title: "Dolor y gloria",
+            director: "Pedro Almodóvar",
+            genre: "Drama",
+            summary: "Autorretrato ficcionado de un director deprimido entre drogas, amores fracasados y recuerdos.",
+            reviewScore: 4,
+            imageSrc: "imagenes/do,or gloria.jpg"
+        },
+        {
+            title: "El padrino",
+            director: "Francis Ford Coppola",
+            genre: "Drama, Crimen",
+            summary: "Obra maestra sobre la mafia y la familia Corleone.",
+            reviewScore: 5,
+            imageSrc: "imagenes/padrino.jpg"
+        },
+        {
+            title: "Amor",
+            director: "Michael Haneke",
+            genre: "Drama",
+            summary: "Historia de amor entre George y Anne, enfrentando problemas mentales y físicos.",
+            reviewScore: 4,
+            imageSrc: "imagenes/amor.jpg"
+        },
+        {
+            title: "John Wick",
+            director: "Chad Stahelski",
+            genre: "Acción, Thriller",
+            summary: "Saga de acción sobre un asesino buscando venganza.",
+            reviewScore: 5,
+            imageSrc: "imagenes/john wick.jpg"
+        },
+        {
+            title: "Speed",
+            director: "Jan de Bont",
+            genre: "Acción",
+            summary: "Emocionante película de acción sobre un autobús fuera de control.",
+            reviewScore: 4,
+            imageSrc: "imagenes/speed.jpg"
+        }
+    ];
+
+    // Función para mostrar las películas destacadas (Top 10) o filtradas
+    function displayMovies(movieList) {
+        const topMoviesContainer = document.getElementById('topMoviesContainer');
+        topMoviesContainer.innerHTML = '';
+
+        movieList.forEach((movie, index) => {
+            const movieElement = createMovieElement(movie, index + 1);
+            topMoviesContainer.appendChild(movieElement);
+        });
+    }
+
+    // Función para crear un elemento de película HTML
+    function createMovieElement(movie, index) {
+        const movieDiv = document.createElement('div');
+        movieDiv.classList.add('movie');
+        movieDiv.innerHTML = `
+            <img src="${movie.imageSrc}" alt="${movie.title}">
+            <h3>${index}. ${movie.title}</h3>
+            <p>Dirigida por ${movie.director}</p>
+            <p>Género: ${movie.genre}</p>
+            <p>Resumen: ${movie.summary}</p>
+            <p>Puntuación de Reseña: ${movie.reviewScore}</p>
+        `;
+        return movieDiv;
+    }
+
+    // Mostrar todas las películas al cargar la página
+    displayMovies(movies);
+
+    // Función para filtrar películas según el término de búsqueda
+    function searchMovies() {
+        const searchInput = document.getElementById('searchInput');
+        const searchTerm = searchInput.value.trim().toLowerCase();
+
+        if (searchTerm === '') {
+            // Mostrar todas las películas si no hay término de búsqueda
+            displayMovies(movies);
+        } else {
+            // Filtrar películas que coincidan con el término de búsqueda
+            const filteredMovies = movies.filter(movie =>
+                movie.title.toLowerCase().includes(searchTerm)
+            );
+            displayMovies(filteredMovies);
+        }
+    }
+</script>
+
+</body>
+</html>

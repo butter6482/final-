@@ -1,0 +1,82 @@
+.login-button {
+    font-size: 20px; /* Ajusta el tamaño de la fuente */
+    padding: 10px 20px; /* Ajusta el relleno (padding) alrededor del texto */
+    border: 2px solid #333; /* Añade un borde de 2px sólido */
+    border-radius: 5px; /* Añade esquinas redondeadas */
+    text-decoration: none; /* Elimina la decoración de subrayado */
+    color: #333333; /* Color del texto */
+    background-color: #e1ff00; /* Color de fondo */
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e7ff97;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Estilos para las películas */
+.top-movies {
+    /* Eliminamos estilos de grid y ajustamos a una sola columna */
+    display: block;
+}
+
+.movie {
+    background-color: #f6ff00;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Espacio entre películas */
+}
+
+.movie img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.movie h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.movie p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Estilos para detalles de película */
+.movie-details {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.movie-details h3 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.movie-details p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
